@@ -13,7 +13,7 @@ namespace IPG_CW2
         public Sprite[] keys = new Sprite[4];
         public GameObject[] keyObjects = new GameObject[2];
 
-        private int count = 0;
+        private readonly int count = 0;
 
         public void AddItem(string itemPick)
         {
@@ -34,6 +34,9 @@ namespace IPG_CW2
             }
         }
 
+        /// <summary>
+        /// Functiion to spanwn golden key
+        /// </summary>
         public void SpawnGoldenkey()
         {
             int index = 0;
@@ -49,6 +52,9 @@ namespace IPG_CW2
             }
         }
 
+        /// <summary>
+        /// Function too brownkey
+        /// </summary>
         public void SpawnBrownKey()
         {
             int index = 1;
