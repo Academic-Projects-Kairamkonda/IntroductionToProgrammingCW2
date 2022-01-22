@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   silderRotationValue: {fileID: 806382696}
+  mouseInput: 0
 --- !u!4 &699558410
 Transform:
   m_ObjectHideFlags: 0
@@ -603,7 +604,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 360
   m_WholeNumbers: 1
-  m_Value: 360
+  m_Value: 56
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -619,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a8231ceafa79c4185c62e8288f9324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleValue: {fileID: 149965435}
+  angleText: {fileID: 149965435}
 --- !u!1 &896102566
 GameObject:
   m_ObjectHideFlags: 0

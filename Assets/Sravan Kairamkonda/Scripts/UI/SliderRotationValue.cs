@@ -4,32 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SilderRotationValue : MonoBehaviour
+public class SliderRotationValue : MonoBehaviour
 {
     /// <summary>
     /// Text component of the slider value.
     /// </summary>
-    [SerializeField] private TextMeshProUGUI angleValue;
+    [SerializeField] private TextMeshProUGUI angleText;
    
     /// <summary>
     /// slider to store the value from the inspector.
     /// </summary>
-    private float sliderValue;
+    private float angleValue;
 
     /// <summary>
     /// property of slider value which only get by another values.
     /// </summary>
-    public float SliderValue
+    public float AngleValue
     {
-        get { return sliderValue; }
+        get { return angleValue; }
     }
 
     #region Unity functions
-
-    void Awake()
-    {
-        sliderValue = this.GetComponent<Slider>().value;
-    }
 
     void Start()
     {
@@ -38,7 +33,8 @@ public class SilderRotationValue : MonoBehaviour
 
     void Update()
     {
-        SliderValueChanged();
+        angleValue = this.GetComponent<Slider>().value;
+        angleText.text = angleValue.ToString();
     }
 
     #endregion Unity functions
@@ -48,7 +44,7 @@ public class SilderRotationValue : MonoBehaviour
     /// </summary>
     private void SliderValueChanged()
     {
-        angleValue.text= sliderValue.ToString();
+        angleText.text= angleValue.ToString();
     }
 
     /// <summary>
@@ -56,6 +52,6 @@ public class SilderRotationValue : MonoBehaviour
     /// </summary>
     private void DefaultSilderRotationValue()
     {
-        angleValue.text=0.ToString();
+        angleText.text=0.ToString();
     }
 }

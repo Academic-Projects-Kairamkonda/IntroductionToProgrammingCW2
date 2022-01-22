@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Get the current rotation value.
     /// </summary>
-    public SilderRotationValue silderRotationValue;
+    public SliderRotationValue silderRotationValue;
 
     /// <summary>
     /// Stores the value of the slider.
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void RotatePlayer()
     {
-        tiltAngle = silderRotationValue.SliderValue*Time.deltaTime;
+        tiltAngle = silderRotationValue.AngleValue*Time.deltaTime;
 
         if (mouseInput)
         {
