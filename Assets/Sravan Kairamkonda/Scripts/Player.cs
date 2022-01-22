@@ -4,25 +4,72 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// Get the current rotation value.
+    /// </summary>
     public SilderRotationValue silderRotationValue;
 
-    float tiltAngle; 
+    /// <summary>
+    /// Stores the value of the slider.
+    /// </summary>
+    float tiltAngle;
+
+    /// <summary>
+    /// boolean to rotate with mouseeInput
+    /// </summary>
+    public bool mouseInput;
+
+    #region Unity functions
+
 
     private void Start()
     {
-        transform.localEulerAngles = Vector3.zero;
-        Cursor.lockState = CursorLockMode.Locked;
+        DefaultPlayerValues();
     }
 
     void Update()
     {
+        RotatePlayer();
+    }
+
+    #endregion Unity functions
+
+    /// <summary>
+    /// This function mainly used to reset values of player before the game starts.
+    /// </summary>
+    private void DefaultPlayerValues()
+    {
+        //Cursor.lockState = CursorLockMode.Locked;
+
+        transform.localEulerAngles = Vector3.zero;
+        mouseInput = false;
+    }
+
+    /// <summary>
+    /// Rotates the player on "z-axis".
+    /// </summary>
+    private void RotatePlayer()
+    {
         tiltAngle = silderRotationValue.SliderValue*Time.deltaTime;
 
-        // Smoothly tilts a transform towards a target rotation.
-        float tiltAroundZ = Input.GetAxis("Mouse X") * tiltAngle;
+        if (mouseInput)
+        {
+            // Smoothly tilts a transform towards a target rotation.
+            float tiltAroundZ = Input.GetAxis("Mouse X") * tiltAngle;
  
-        transform.Rotate(0,0, tiltAroundZ);
-
+            transform.Rotate(0,0, tiltAroundZ);
+        }
+        else
+        {
+            transform.Rotate(0,0,tiltAngle);
+        }
+    }
+   
+    /// <summary>
+    /// UnLockMode is used to change the angle whenever needed.
+    /// </summary>
+    private void MouseUnLockMode()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
