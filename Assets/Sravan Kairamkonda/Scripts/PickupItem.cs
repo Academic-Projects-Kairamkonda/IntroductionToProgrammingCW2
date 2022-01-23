@@ -10,6 +10,7 @@ namespace IPG_CW2
         Rigidbody rb;
 
         public InventoryData inventoryData;
+
         public GameObject itemMenu;
 
         private void Awake()
