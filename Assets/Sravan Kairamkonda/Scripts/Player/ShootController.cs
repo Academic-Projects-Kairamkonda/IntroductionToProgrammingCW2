@@ -2,44 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootController : MonoBehaviour
+namespace IPG_CW2
 {
-    /// <summary>
-    /// GameObject to hold the bullet prefab.
-    /// </summary>
-    public GameObject bullet;
-
-    /// <summary>
-    /// Parent to hold the bullets.
-    /// </summary>
-    public Transform ammunition;
-
-    public Transform gunNozzle;
-
-
-    void Start()
+    public class ShootController : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+
+        /// <summary>
+        /// GameObject to hold the bullet prefab.
+        /// </summary>
+        public GameObject bullet;
+
+        /// <summary>
+        /// Parent to hold the bullets.
+        /// </summary>
+        public Transform ammunation;
+
+        /// <summary>
+        /// Bullet Spawn position
+        /// </summary>
+        public Transform gunNozzle;
+
+
+        private AudioController audioController;
+        private Animator animator;
+
+
+        private void Awake()
         {
-            InstantiateBullet(bullet,gunNozzle);
+            audioController = GetComponent<AudioController>();
+            animator = this.transform.GetChild(0).GetComponent<Animator>();
         }
-    }
 
-    public void InstantiateBullet(GameObject prefab,Transform target)
-    {
-        GameObject temp=Instantiate(prefab, target.transform.position, target.transform.rotation);
-        temp.GetComponent<Rigidbody2D>().AddForce(gunNozzle.transform.up*10,ForceMode2D.Impulse);
-        temp.transform.SetParent(ammunition.transform);
-    }
+        void Start()
+        {
 
-    public void ShootPlayer()
-    {
-        //Instantiate(bullet);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                InstantiateBullet(bullet, gunNozzle);
+            }
+        }
+
+        public void InstantiateBullet(GameObject prefab, Transform target)
+        {
+            audioController.PlayShootSound();
+            animator.SetTrigger("Recoil");
+            GameObject temp = Instantiate(prefab, target.transform.position, target.transform.rotation);
+            temp.GetComponent<Rigidbody2D>().AddForce(gunNozzle.transform.up * 10, ForceMode2D.Impulse);
+            temp.transform.SetParent(ammunation.transform);
+        }
+
     }
 }

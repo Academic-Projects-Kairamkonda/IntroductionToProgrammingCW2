@@ -39,6 +39,7 @@ namespace IPG_CW2
 
         void Update()
         {
+            MouseUnLockMode();
             RotatePlayer();
         }
 
@@ -55,7 +56,7 @@ namespace IPG_CW2
 
             transform.localEulerAngles = Vector3.zero;
             autoRotate = false;
-            mouseInput = false;
+            //mouseInput = false;
         }
 
         /// <summary>
@@ -65,14 +66,15 @@ namespace IPG_CW2
         {
             tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
 
-            if (autoRotate)
+            if (mouseInput)
             {
                 // Smoothly tilts a transform towards a target rotation.
                 float tiltAroundZ = Input.GetAxis("Mouse X") * tiltAngle;
 
                 transform.Rotate(0, 0, tiltAroundZ);
             }
-            else if(mouseInput)
+
+            else if(autoRotate)
             {
                 transform.Rotate(0, 0, tiltAngle);
             }
