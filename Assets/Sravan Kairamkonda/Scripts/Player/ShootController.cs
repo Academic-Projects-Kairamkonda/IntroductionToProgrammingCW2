@@ -27,9 +27,19 @@ public class ShootController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject temp=Instantiate(bullet,gunNozzle.transform.position,Quaternion.identity);
-            temp.transform.SetParent(ammunition.transform);
-            temp.GetComponent<Rigidbody2D>().AddForce(gunNozzle.transform.up*1,ForceMode2D.Impulse);
+            InstantiateBullet(bullet,gunNozzle);
         }
+    }
+
+    public void InstantiateBullet(GameObject prefab,Transform target)
+    {
+        GameObject temp=Instantiate(prefab, target.transform.position, target.transform.rotation);
+        temp.GetComponent<Rigidbody2D>().AddForce(gunNozzle.transform.up*10,ForceMode2D.Impulse);
+        temp.transform.SetParent(ammunition.transform);
+    }
+
+    public void ShootPlayer()
+    {
+        //Instantiate(bullet);
     }
 }
