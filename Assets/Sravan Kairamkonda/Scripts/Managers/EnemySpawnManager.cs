@@ -4,32 +4,31 @@ using UnityEngine;
 
 namespace IPG_CW2
 {
-
     public class EnemySpawnManager : MonoBehaviour
     {
         public Transform[] enemyPositions;
 
         public GameManager gameManager;
 
-        public GameObject enemy;
+        public GameObject enemyObject;
 
-        // Start is called before the first frame update
         void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-
+        { 
+            StartCoroutine("SpawnEnemy");
+            
         }
 
         IEnumerator SpawnEnemy()
         {
+            while (true)
+            {
+                GameObject temp=Instantiate(enemyObject);
+                int index=Random.Range(0, enemyPositions.Length);
+                temp.transform.localPosition = enemyPositions[index].position;
+                temp.transform.GetComponent<Enemy>().target = gameManager.player.transform;
 
-            yield return null;
+                yield return new WaitForSeconds(2f);
+            }
         }
 
 
