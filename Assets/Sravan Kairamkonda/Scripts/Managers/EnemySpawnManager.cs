@@ -26,6 +26,7 @@ namespace IPG_CW2
                 int index=Random.Range(0, enemyPositions.Length);
                 temp.transform.localPosition = enemyPositions[index].position;
                 temp.transform.GetComponent<Enemy>().target = gameManager.player.transform;
+                temp.gameObject.name = "Enemy";
 
                 yield return new WaitForSeconds(2f);
             }
