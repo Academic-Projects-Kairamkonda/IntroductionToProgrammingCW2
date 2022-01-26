@@ -65,6 +65,7 @@ namespace IPG_CW2
         private void RotatePlayer()
         {
             tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
+            Debug.Log(silderRotationValue.AngleValue);
 
             if (mouseInput)
             {

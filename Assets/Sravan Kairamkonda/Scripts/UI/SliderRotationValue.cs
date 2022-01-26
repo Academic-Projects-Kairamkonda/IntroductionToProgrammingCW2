@@ -29,21 +29,25 @@ namespace IPG_CW2
         public float AngleValue
         {
             get { return angleValue; }
+            set { if(AngleValue>=0) angleValue = value; }
         }
 
         #endregion Members 
 
         #region Unity Methods
 
-        void Start()
+        private void Awake()
         {
-            DefaultSilderRotationValue();
+            AngleValue = this.GetComponent<Slider>().value;
+            
         }
 
-        void Update()
+        private void Update()
         {
-            SliderValueChanged();
+            this.GetComponent<Slider>().value = AngleValue;
+            angleText.text = AngleValue.ToString();
         }
+
 
         #endregion Unity Methods
 
@@ -54,8 +58,7 @@ namespace IPG_CW2
         /// </summary>
         private void SliderValueChanged()
         {
-            angleValue = this.GetComponent<Slider>().value;
-            angleText.text = angleValue.ToString();
+            
         }
 
         /// <summary>
@@ -63,8 +66,18 @@ namespace IPG_CW2
         /// </summary>
         private void DefaultSilderRotationValue()
         {
-            angleText.text = 0.ToString();
+            
         }
+
+        /// <summary>
+        /// Decreases the angle with respective to Time.delatime
+        /// </summary>
+
+        private void DecrementAngle()
+        {
+          
+        }
+
 
         #endregion Methods
     }

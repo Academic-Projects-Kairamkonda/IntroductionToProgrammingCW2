@@ -29,15 +29,12 @@ namespace IPG_CW2
 
         #endregion Components
 
+        private const float range = 3f;
+
         private void Awake()
         {
             audioController = GetComponent<AudioController>();
             animator = this.transform.GetChild(0).GetComponent<Animator>();
-        }
-
-        void Start()
-        {
-            lineRenderer.SetPosition(1,new Vector3(0,0,-5));
         }
 
         // Update is called once per frame
@@ -46,20 +43,29 @@ namespace IPG_CW2
             if (Input.GetMouseButtonDown(0))
             {
                 InstantiateBullet(bullet, gunNozzle);
+                this.GetComponent<Player>().silderRotationValue.AngleValue-=5;
             }
             
             RaycastHit2D hit;
 
-            hit=Physics2D.Raycast(gunNozzle.position,Vector2.down);
+            hit=Physics2D.Raycast(gunNozzle.position,gunNozzle.up,range);
+
+            Debug.DrawLine(gunNozzle.position, gunNozzle.up*4f);
 
             if (hit.collider != null)
             {
                 Debug.Log(hit.collider.gameObject.name);
 
+                float distance=Vector3.Distance(gunNozzle.transform.position,hit.collider.transform.position);
+
                 if (hit.collider.gameObject.name=="Enemy")
                 {
-                   // lineRenderer.SetPosition(1, hit.point);
+                    lineRenderer.SetPosition(1,new Vector3(0,0,-distance));
                 }
+            }
+            else
+            {
+               lineRenderer.SetPosition(1,new Vector3(0,0,-range));
             }
         }
 
