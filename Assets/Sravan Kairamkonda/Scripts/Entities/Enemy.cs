@@ -13,13 +13,20 @@ namespace IPG_CW2
         {
             speed = 2f;
             speed *= Time.deltaTime;
-            transform.position=Vector3.MoveTowards(transform.position, target.transform.position,speed);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+
+            var dir = target.position - transform.position;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+            if (collision.gameObject.tag == "Bullet")
+            {
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject);
+            }
         }
     }
 }
