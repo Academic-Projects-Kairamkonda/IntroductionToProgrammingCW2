@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f8e0e81de32c52c4ea33e3a099d660e6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Tarif Arabic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e2d2fc45b371ecb4ebc5cdd853692999, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
