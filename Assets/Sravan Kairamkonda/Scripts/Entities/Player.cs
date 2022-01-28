@@ -39,8 +39,13 @@ namespace IPG_CW2
 
         void Update()
         {
-            MouseUnLockMode();
             RotatePlayer();
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector2.up * Time.deltaTime * 5f);
+            }
+
         }
 
         #endregion Unity functions
@@ -64,8 +69,11 @@ namespace IPG_CW2
         /// </summary>
         private void RotatePlayer()
         {
-            tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
-            Debug.Log(silderRotationValue.AngleValue);
+            
+            //tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
+       
+            tiltAngle = 180f * Time.deltaTime;
+
 
             if (mouseInput)
             {
@@ -73,6 +81,7 @@ namespace IPG_CW2
                 float tiltAroundZ = Input.GetAxis("Mouse X") * tiltAngle;
 
                 transform.Rotate(0, 0, tiltAroundZ);
+
             }
 
             else if(autoRotate)
@@ -84,17 +93,14 @@ namespace IPG_CW2
         /// <summary>
         /// UnLockMode is used to change the angle whenever needed.
         /// </summary>
-        private void MouseUnLockMode()
+        public void MouseUnLockMode()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
+             Cursor.lockState = CursorLockMode.None;
+        }
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+        public void MouseLocked()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void RotatePlayer(Transform transform)

@@ -54,7 +54,7 @@ namespace IPG_CW2
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
+                //Debug.Log(hit.collider.gameObject.name);
 
                 float distance=Vector3.Distance(gunNozzle.transform.position,hit.collider.transform.position);
 

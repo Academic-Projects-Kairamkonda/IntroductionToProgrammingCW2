@@ -12,11 +12,12 @@ namespace IPG_CW2
 
         public GameObject enemyObject;
 
-        void Start()
-        { 
-            StartCoroutine("SpawnEnemy");
-            
-        }
+        public Transform enemyParent;
+
+        public List<GameObject> enemies= new List<GameObject>();
+
+        public AudioClip blastClip;
+
 
         IEnumerator SpawnEnemy()
         {
@@ -27,9 +28,20 @@ namespace IPG_CW2
                 temp.transform.localPosition = enemyPositions[index].position;
                 temp.transform.GetComponent<Enemy>().target = gameManager.player.transform;
                 temp.gameObject.name = "Enemy";
+                temp.transform.SetParent(enemyParent);
+                temp.AddComponent<AudioSource>();
+                temp.transform.GetComponent<AudioSource>().playOnAwake = false;
+
+
+                temp.transform.GetComponent<AudioSource>().PlayOneShot(blastClip);
 
                 yield return new WaitForSeconds(2f);
             }
+        }
+
+        public void SpawnEnemies()
+        {
+            StartCoroutine("SpawnEnemy");
         }
 
 

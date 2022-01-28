@@ -24,6 +24,7 @@ namespace IPG_CW2
         {
             if (collision.gameObject.tag == "Bullet")
             {
+                this.GetComponent<AudioSource>().Play();
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
             }
