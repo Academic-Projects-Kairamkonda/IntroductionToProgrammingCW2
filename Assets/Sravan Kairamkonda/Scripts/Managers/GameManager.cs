@@ -26,6 +26,9 @@ namespace IPG_CW2
         {
             playerObject.SetActive(true);
             enemyObject.SetActive(true);
+            player.GetComponent<CollisionController>().healthImage.fillAmount = 1;
+            player.GetComponent<CollisionController>().healthImage.color = Color.green;
+            shootController.bulletCount = 10;
 
             if (enemyObject)
             {
@@ -40,7 +43,6 @@ namespace IPG_CW2
             enemyObject.SetActive(false);
             DestroyObjects(enemies);
             DestroyObjects(ammo);
-            shootController.bulletCount = 10;
         }
 
         public void DestroyObjects(GameObject obj)

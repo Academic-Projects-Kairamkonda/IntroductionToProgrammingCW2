@@ -24,7 +24,7 @@ namespace IPG_CW2
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Bullet")
             {
@@ -33,7 +33,13 @@ namespace IPG_CW2
                 temp.transform.SetParent(ammoParent);
                
                 Destroy(collision.gameObject);
-                Destroy(this.gameObject,1f);
+                Destroy(this.gameObject);
+            }
+
+            if (collision.gameObject.tag=="Enemy")
+            {
+                this.GetComponent<AudioSource>().Play();
+                Destroy(collision.gameObject, 0.5f);
             }
         }
     }
