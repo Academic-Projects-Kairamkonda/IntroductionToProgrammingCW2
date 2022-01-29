@@ -72,7 +72,7 @@ namespace IPG_CW2
             
             //tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
        
-            tiltAngle = 180f * Time.deltaTime;
+            tiltAngle = 90f * Time.deltaTime;
 
 
             if (mouseInput)

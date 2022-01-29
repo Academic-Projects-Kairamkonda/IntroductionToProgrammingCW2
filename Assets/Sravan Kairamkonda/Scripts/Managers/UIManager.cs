@@ -13,7 +13,7 @@ namespace IPG_CW2
         public GameObject defaultPanel;
         public GameObject mainPanel;
         public GameObject optionsPanel;
-        public GameObject playAgainPanel;
+       
         public GameObject miniMapPanel;
 
         public GameManager gameManager;
@@ -46,7 +46,6 @@ namespace IPG_CW2
             defaultPanel.SetActive(true);
             mainPanel.SetActive(true);
             optionsPanel.SetActive(false);
-            playAgainPanel.SetActive(false);
             miniMapPanel.SetActive(false);
         }
 
@@ -55,7 +54,6 @@ namespace IPG_CW2
             defaultPanel.SetActive(true);
             mainPanel.SetActive(false);
             optionsPanel.SetActive(true);
-            playAgainPanel.SetActive(false);
         }
 
         public void DisableAllPanels()
@@ -63,7 +61,6 @@ namespace IPG_CW2
             defaultPanel.SetActive(false);
             mainPanel.SetActive(false);
             optionsPanel.SetActive(false);
-            playAgainPanel.SetActive(false);
         }
 
         public void ClickSound()
