@@ -7,7 +7,11 @@ namespace IPG_CW2
     public class Enemy : MonoBehaviour
     {
         public Transform target;
+
         private float speed;
+
+        public GameObject ammo;
+        public Transform ammoParent;
 
         void Update()
         {
@@ -25,8 +29,11 @@ namespace IPG_CW2
             if (collision.gameObject.tag == "Bullet")
             {
                 this.GetComponent<AudioSource>().Play();
+                GameObject temp= Instantiate(ammo,transform.position,Quaternion.identity);
+                temp.transform.SetParent(ammoParent);
+               
                 Destroy(collision.gameObject);
-                Destroy(this.gameObject);
+                Destroy(this.gameObject,1f);
             }
         }
     }

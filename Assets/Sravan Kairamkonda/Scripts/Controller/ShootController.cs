@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace IPG_CW2
 {
@@ -10,6 +11,13 @@ namespace IPG_CW2
         /// GameObject to hold the bullet prefab.
         /// </summary>
         public GameObject bullet;
+
+        /// <summary>
+        /// bullet count;
+        /// </summary>
+        public int bulletCount=10;
+
+        public TextMeshProUGUI bulletText;
 
         /// <summary>
         /// Parent to hold the bullets.
@@ -40,10 +48,13 @@ namespace IPG_CW2
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            bulletText.text =bulletCount.ToString();
+
+            if (Input.GetMouseButtonDown(0) && bulletCount > 0) 
             {
                 InstantiateBullet(bullet, gunNozzle);
-                this.GetComponent<Player>().silderRotationValue.AngleValue-=5;
+                bulletCount--;
+                //this.GetComponent<Player>().silderRotationValue.AngleValue-=5;
             }
             
             RaycastHit2D hit;

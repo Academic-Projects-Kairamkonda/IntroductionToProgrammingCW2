@@ -18,6 +18,8 @@ namespace IPG_CW2
 
         public AudioClip blastClip;
 
+        public GameObject ammoObject;
+        public Transform ammoParent;
 
         IEnumerator SpawnEnemy()
         {
@@ -27,8 +29,13 @@ namespace IPG_CW2
                 int index=Random.Range(0, enemyPositions.Length);
                 temp.transform.localPosition = enemyPositions[index].position;
                 temp.transform.GetComponent<Enemy>().target = gameManager.player.transform;
+
                 temp.gameObject.name = "Enemy";
                 temp.transform.SetParent(enemyParent);
+
+                temp.transform.GetComponent<Enemy>().ammo = ammoObject;
+                temp.transform.GetComponent <Enemy>().ammoParent=ammoParent;
+
                 temp.AddComponent<AudioSource>();
                 temp.transform.GetComponent<AudioSource>().playOnAwake = false;
 

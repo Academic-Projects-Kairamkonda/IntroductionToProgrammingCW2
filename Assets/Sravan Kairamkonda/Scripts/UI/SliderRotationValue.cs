@@ -29,22 +29,19 @@ namespace IPG_CW2
         public float AngleValue
         {
             get { return angleValue; }
-            set { if(AngleValue>=0) angleValue = value; }
+            set { angleValue = value; }
         }
 
         #endregion Members 
 
         #region Unity Methods
 
-        private void Awake()
-        {
-            AngleValue = this.GetComponent<Slider>().value;
-            
-        }
-
         private void Update()
         {
-            this.GetComponent<Slider>().value = AngleValue;
+            //this.GetComponent<Slider>().value = AngleValue;
+
+            AngleValue = this.GetComponent<Slider>().value;
+
             angleText.text = AngleValue.ToString();
         }
 

@@ -13,7 +13,9 @@ namespace IPG_CW2
         public ShootController shootController;
 
         public UIManager uiManager;
+
         public GameObject enemies;
+        public GameObject ammo;
 
         private void Start()
         {
@@ -36,14 +38,16 @@ namespace IPG_CW2
         {
             playerObject.SetActive(false);
             enemyObject.SetActive(false);
-            DestroyEnemies();
+            DestroyObjects(enemies);
+            DestroyObjects(ammo);
+            shootController.bulletCount = 10;
         }
 
-        public void DestroyEnemies()
+        public void DestroyObjects(GameObject obj)
         {
-            for (int i = 0; i < enemies.transform.childCount; i++)
+            for (int i = 0; i < obj.transform.childCount; i++)
             {
-                Destroy(enemies.transform.GetChild(i).gameObject);
+                Destroy(obj.transform.GetChild(i).gameObject);
             }
         }
 

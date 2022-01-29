@@ -9,6 +9,7 @@ namespace IPG_CW2
         public GameManager GameManager;
 
         public  string enemyTag;
+        public string ammoTag;
 
         private void OnTriggerEnter2D(Collider2D collision)
         { 
@@ -17,6 +18,12 @@ namespace IPG_CW2
                 GameManager.QuitGame();
                 GameManager.uiManager.MainPanel();
                 Cursor.lockState = CursorLockMode.None;
+            }
+
+            if (collision.gameObject.tag==ammoTag)
+            {
+                this.GetComponent<ShootController>().bulletCount += 3;
+                Destroy(collision.gameObject,0.5f);
             }
         }
     }

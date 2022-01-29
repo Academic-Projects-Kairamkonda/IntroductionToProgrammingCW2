@@ -14,6 +14,7 @@ namespace IPG_CW2
         public GameObject mainPanel;
         public GameObject optionsPanel;
         public GameObject playAgainPanel;
+        public GameObject miniMapPanel;
 
         public GameManager gameManager;
 
@@ -46,6 +47,7 @@ namespace IPG_CW2
             mainPanel.SetActive(true);
             optionsPanel.SetActive(false);
             playAgainPanel.SetActive(false);
+            miniMapPanel.SetActive(false);
         }
 
         public void OptionalPanel()
