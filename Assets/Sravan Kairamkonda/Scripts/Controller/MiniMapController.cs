@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniMapController : MonoBehaviour
+namespace IPG_CW2
 {
-    public Transform player;
-
-    void Update()
+    public class MiniMapController : MonoBehaviour
     {
-        Vector3 newPosition= player.position;
-        newPosition.z = transform.position.z;
-        transform.position = newPosition;
+        #region Members
+
+        public Transform player;
+
+        #endregion Members
+
+        #region Unity Methods
+
+        void Update()
+        {
+            Vector3 newPosition = player.position;
+            newPosition.z = transform.position.z;
+            transform.position = newPosition;
+        }
+
+        #endregion Unity Methods
     }
 }

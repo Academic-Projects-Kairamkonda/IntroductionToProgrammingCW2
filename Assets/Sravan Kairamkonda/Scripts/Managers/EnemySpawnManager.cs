@@ -6,21 +6,56 @@ namespace IPG_CW2
 {
     public class EnemySpawnManager : MonoBehaviour
     {
+        #region Members
+
+        /// <summary>
+        /// enemy positioonns
+        /// </summary>
         public Transform[] enemyPositions;
 
+        /// <summary>
+        /// GameManager has the all objects references
+        /// </summary>
         public GameManager gameManager;
 
+        /// <summary>
+        /// enemy gameobject
+        /// </summary>
         public GameObject enemyObject;
 
+        /// <summary>
+        /// it used to set all enemyobject to this as  a parent
+        /// </summary>
         public Transform enemyParent;
 
+        /// <summary>
+        /// list of enemies
+        /// </summary>
         public List<GameObject> enemies= new List<GameObject>();
 
+        /// <summary>
+        /// blastclip audio
+        /// </summary>
         public AudioClip blastClip;
 
+        /// <summary>
+        /// ammo prefab object 
+        /// </summary>
         public GameObject ammoObject;
+
+        /// <summary>
+        /// as similarly to enemyparent it is used to set as a paret.
+        /// </summary>
         public Transform ammoParent;
 
+        #endregion Members
+
+        #region Unity Methods
+
+        /// <summary>
+        /// co routines to spawn enemies
+        /// </summary>
+        /// <returns> wait time to spawn another enemies</returns>
         IEnumerator SpawnEnemy()
         {
             while (true)
@@ -46,11 +81,18 @@ namespace IPG_CW2
             }
         }
 
+        #endregion Unity Methods
+
+        #region Methods
+
+        /// <summary>
+        /// spawn enemies 
+        /// </summary>
         public void SpawnEnemies()
         {
             StartCoroutine("SpawnEnemy");
         }
 
-
+        #endregion Methods
     }
 }

@@ -8,13 +8,33 @@ namespace IPG_CW2
 {
     public class CollisionController : MonoBehaviour
     {
+        #region Members
+
         public GameManager GameManager;
 
-        public  string enemyTag;
+        /// <summary>
+        /// String holds enemy tag name
+        /// </summary>
+        public string enemyTag;
+
+        /// <summary>
+        /// String hold the ammo tag
+        /// </summary>
         public string ammoTag;
 
+        /// <summary>
+        /// Health bar Image which is filled type reduced when it is damaged
+        /// </summary>
         public Image healthImage;
 
+        #endregion Members
+
+        #region UnityMethods
+
+        /// <summary>
+        /// Update the health bar based on the collision
+        /// </summary>
+        /// <param name="collision">collision of the another object</param>
         private void OnTriggerEnter2D(Collider2D collision)
         { 
             if (collision.gameObject.tag==enemyTag)
@@ -41,5 +61,7 @@ namespace IPG_CW2
                 Destroy(collision.gameObject,0.5f);
             }
         }
+
+        #endregion Unity Methods
     }
 }

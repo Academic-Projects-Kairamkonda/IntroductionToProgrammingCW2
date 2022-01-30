@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace IPG_CW2
 {
-    private void OnBecameInvisible()
+    public class Bullet : MonoBehaviour
     {
-        Destroy(gameObject);
+        #region Unity Methods
+        /// <summary>
+        /// Destroys the bullet when it moves out of the camera bounds
+        /// </summary>
+        private void OnBecameInvisible()
+        {
+            Destroy(gameObject);
+        }
+
+        #endregion Unity Methods
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 namespace IPG_CW2
 {
-
     public class UIManager : MonoBehaviour
     {
+        #region Members
+
         private AudioSource uiAudioSource;
         
         public GameObject defaultPanel;
@@ -22,25 +23,24 @@ namespace IPG_CW2
         public AudioClip switchAudio;
         public AudioClip backAudio;
 
+        #endregion Members
 
+        #region UnityMethods
 
         private void Awake()
         {
             uiAudioSource = GetComponent<AudioSource>();
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             MainPanel();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
+        #endregion Unity Methods
 
+        #region Methods
         public void MainPanel()
         {
             defaultPanel.SetActive(true);
@@ -86,6 +86,6 @@ namespace IPG_CW2
             gameManager.PlayGame();
         }
 
-
+        #endregion Methods
     }
 }
