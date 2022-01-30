@@ -4,9 +4,6 @@ using UnityEngine;
 
 namespace IPG_CW2
 {
-    /// <summary>
-    /// This class represents player rotation 
-    /// </summary>
     public class Player : MonoBehaviour
     {
         #region Members
@@ -26,17 +23,26 @@ namespace IPG_CW2
         /// </summary>
         public bool autoRotate;
 
+        /// <summary>
+        /// Rotate the player on mosue Input
+        /// </summary>
         public bool mouseInput;
 
         #endregion Members
 
         #region Unity Methods
 
+        /// <summary>
+        /// reset the everthing to default values
+        /// </summary>
         private void Start()
         {
             DefaultPlayerValues();
         }
 
+        /// <summary>
+        /// Player movement with the input
+        /// </summary>
         void Update()
         {
             RotatePlayer();
@@ -69,10 +75,15 @@ namespace IPG_CW2
         /// </summary>
         private void RotatePlayer()
         {
-            
-            //tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
-       
-            tiltAngle = 90f * Time.deltaTime;
+
+            if (silderRotationValue.AngleValue == 0)
+            {
+                tiltAngle = 90f * Time.deltaTime;
+            }
+            else
+            {
+                tiltAngle = silderRotationValue.AngleValue * Time.deltaTime;
+            }
 
 
             if (mouseInput)
@@ -98,11 +109,18 @@ namespace IPG_CW2
              Cursor.lockState = CursorLockMode.None;
         }
 
+        /// <summary>
+        /// Lockmode when the game is playing
+        /// </summary>
         public void MouseLocked()
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        /// <summary>
+        /// Rotate the player when anything is in the range
+        /// </summary>
+        /// <param name="transform"></param>
         public void RotatePlayer(Transform transform)
         {
             this.transform.localEulerAngles=transform.localEulerAngles;

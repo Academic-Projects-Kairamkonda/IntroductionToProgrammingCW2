@@ -6,6 +6,8 @@ namespace IPG_CW2
 {
     public class GameManager : MonoBehaviour
     {
+        #region Members
+
         public GameObject playerObject;
         public GameObject enemyObject;
 
@@ -17,10 +19,18 @@ namespace IPG_CW2
         public GameObject enemies;
         public GameObject ammo;
 
+        #endregion Members
+
+        #region Unity Methods
+
         private void Start()
         {
             QuitGame();
         }
+
+        #endregion Unity Methods
+
+        #region Methods
 
         public void PlayGame()
         {
@@ -29,6 +39,8 @@ namespace IPG_CW2
             player.GetComponent<CollisionController>().healthImage.fillAmount = 1;
             player.GetComponent<CollisionController>().healthImage.color = Color.green;
             shootController.bulletCount = 10;
+
+            player.gameObject.transform.position = Vector3.zero;
 
             if (enemyObject)
             {
@@ -53,7 +65,7 @@ namespace IPG_CW2
             }
         }
 
-
+        #endregion Methods
 
     }
 }

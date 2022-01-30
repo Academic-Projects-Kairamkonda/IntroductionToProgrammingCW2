@@ -7,6 +7,7 @@ namespace IPG_CW2
 {
     public class ShootController : MonoBehaviour
     {
+        #region Members
         /// <summary>
         /// GameObject to hold the bullet prefab.
         /// </summary>
@@ -17,6 +18,9 @@ namespace IPG_CW2
         /// </summary>
         public int bulletCount=10;
 
+        /// <summary>
+        /// Update the bullets data to the text
+        /// </summary>
         public TextMeshProUGUI bulletText;
 
         /// <summary>
@@ -37,7 +41,14 @@ namespace IPG_CW2
 
         #endregion Components
 
+        /// <summary>
+        /// player range to shoot the enemy automatically
+        /// </summary>
         private const float range = 3f;
+
+        #endregion Members
+
+        #region Unity Methods
 
         private void Awake()
         {
@@ -80,6 +91,10 @@ namespace IPG_CW2
             }
         }
 
+        #endregion Unity Methods
+
+        #region Methods
+
         public void InstantiateBullet(GameObject prefab, Transform target)
         {
             audioController.PlayShootSound();
@@ -88,6 +103,8 @@ namespace IPG_CW2
             temp.GetComponent<Rigidbody2D>().AddForce(gunNozzle.transform.up * 10, ForceMode2D.Impulse);
             temp.transform.SetParent(ammunation.transform);
         }
+
+        #endregion Methods
 
     }
 }
