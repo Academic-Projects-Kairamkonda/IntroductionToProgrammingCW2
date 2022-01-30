@@ -59,7 +59,7 @@ namespace IPG_CW2
         // Update is called once per frame
         void Update()
         {
-            bulletText.text ="Ammo: "+bulletCount.ToString();
+            bulletText.text =": "+bulletCount.ToString();
 
             if (Input.GetMouseButtonDown(0) && bulletCount > 0) 
             {
