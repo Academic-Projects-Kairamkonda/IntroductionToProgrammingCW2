@@ -16,11 +16,23 @@ namespace IPG_CW2
 
         void Update()
         {
+            MiniMapCamera();
+        }
+
+        #endregion Unity Methods
+
+        #region Methods
+        
+        /// <summary>
+        /// Mini map camera to show on the canvas
+        /// </summary>
+        public void MiniMapCamera()
+        {
             Vector3 newPosition = player.position;
             newPosition.z = transform.position.z;
             transform.position = newPosition;
         }
 
-        #endregion Unity Methods
+        #endregion Methods
     }
 }

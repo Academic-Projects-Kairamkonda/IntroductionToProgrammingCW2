@@ -95,6 +95,11 @@ namespace IPG_CW2
 
         #region Methods
 
+        /// <summary>
+        /// Instatiate bullet
+        /// </summary>
+        /// <param name="prefab">bullet prefab</param>
+        /// <param name="target"> origin position to instantiate the bullet </param>
         public void InstantiateBullet(GameObject prefab, Transform target)
         {
             audioController.PlayShootSound();
