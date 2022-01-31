@@ -32,6 +32,9 @@ namespace IPG_CW2
 
         #region Methods
 
+        /// <summary>
+        /// Reset the whole data in the game.
+        /// </summary>
         public void PlayGame()
         {
             playerObject.SetActive(true);
